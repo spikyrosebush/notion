@@ -1,0 +1,92 @@
+### DATE
+
+✨ **Copy** **the link** below into your page and choose **"Create Embed"** 
+
+[Date Widget Notion](https://elliegons.github.io/notion/datewidgetjournal.html)
+
+<aside>
+<img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9f4c1d71-c2c7-4f0c-ab5a-1ccec58f65a0/idea.png" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9f4c1d71-c2c7-4f0c-ab5a-1ccec58f65a0/idea.png" width="40px" /> **To edit the widget, change colors, size etc. and put your name in the greeting message, follow [this tutorial](https://blog.shorouk.dev/2020/06/how-to-embed-any-number-of-html-widgets-snippets-into-notion-app-for-free/) and use this html code below!** 🌈
+
+</aside>
+
+- **Widget Html Code**
+    
+    To customize the widget with your name, find this block of code and replace it.
+    
+    ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/46a14e09-12d1-4b39-802e-78257ab34a80/chrome-capture.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/46a14e09-12d1-4b39-802e-78257ab34a80/chrome-capture.png)
+    
+    ```jsx
+    <html> 
+    <head>
+        <title>Date Widget Notion</title> 
+        <style>
+          #lbl {
+            display: flex;
+            font-family: sans-serif;
+            font-size: 18pt;
+            color: #ff5757;
+            padding: 5px;
+            border: 1px solid #ffffff;
+            justify-content: left;
+            line-height: 1.5;
+            height:85%;
+            font-weight: bold;
+            flex-direction: row;
+          }
+    
+          #container {
+            display: flex;
+            align-items: flex-start;
+          }
+    
+          #date{
+              font-size:12pt;
+              font-weight: bold;
+          }
+    
+          body{
+              background-color: #ffffff;
+          }
+        </style>
+    </head>
+    <body>
+        <div id="lbl"></div>
+    </body>
+    
+    <script>
+        var weekday = new Array(7);
+        weekday[0] = "sunday";
+        weekday[1] = "monday";
+        weekday[2] = "tuesday";
+        weekday[3] = "wednesday";
+        weekday[4] = "thursday";
+        weekday[5] = "friday";
+        weekday[6] = "saturday";
+    
+        const monthNames = ["january", "february", "march", "april", "may", "june",
+          "july", "august", "september", "october", "november", "december"
+        ];
+    
+        
+        var today = new Date();
+        var hrs = today.getHours();
+        var dayOfWeek = weekday[today.getDay()];
+        var date = `${dayOfWeek}, ${monthNames[today.getMonth()]} ${today.getDate()}, ${today.getFullYear()}`;
+    
+        var greet;
+    
+        if (hrs < 12)
+            greet = 'good morning, Kristin.  ';
+        else if (hrs >= 12 && hrs <= 17)
+            greet = 'good afternoon, Kristin. ';
+        else if (hrs >= 17 && hrs <= 24)
+            greet = 'good evening, Kristin.  ';
+    
+        document.getElementById('lbl').innerHTML = `
+            <div class="container">
+              <div id="date"> ${date}</div>
+              <div class="greeting">${greet}</div>
+            <div/>
+        `;
+    </script> 
+    </html>
